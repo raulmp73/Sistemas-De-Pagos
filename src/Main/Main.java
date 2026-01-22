@@ -1,15 +1,12 @@
-package Sistemas_Pagos;
+package Main;
 
+//tu abuela bro
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Iterator;
-import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
-
-
-public class Sistemas_De_Pagos {
+public class Main {
 	
 	static Scanner sc = new Scanner(System.in);
 	
@@ -108,149 +105,35 @@ public class Sistemas_De_Pagos {
 	 * @param Cent Es el total de los que se debe de devolver el programa en centimos
 	 * @return Devuelve el cambio
 	 */
-	public static void CalcularCambio(Float ImporteTotal) {//
+	public static void CalcularCambio(Float ImporteTotal) {//TODO: Cambiar variable
 		System.out.println("El cambio es de: ");
 		//convertimos a centimos para no complicarnos la vida
 		int centimos = (int) Math.round(ImporteTotal*100), billete=10000, cambio;
-
-		  
-			switch (billete) {
-			case 10000: 
-				cambio = centimos/10000;
-				if (cambio==1) {
-					System.out.println("1 billete de 100€");
-				} else if (cambio>1) {
-					System.out.println(cambio+" billetes de 100€");
-				}
-				centimos -= cambio*10000;
-				billete=5000;
-				//break; quito brake por que va a pasar las opciones del swich
-			case 5000: 
-				cambio = centimos/5000;
-				if (cambio==1) {
-					System.out.println("1 billete de 50€");
-				} else if (cambio>1) {
-					System.out.println(cambio+" billetes de 50€");
-				}
-				centimos -= cambio*5000;
-				billete=2000;
-				//break;
-			case 2000: 
-				cambio = centimos/2000;
-				if (cambio==1) {
-					System.out.println("1 billete de 20€");
-				} else if (cambio>1) {
-					System.out.println(cambio+" billetes de 20€");
-				}
-				centimos -= cambio*2000;
-				billete=1000;
-				//break;
-			case 1000: 
-				cambio = centimos/1000;
-				if (cambio==1) {
-					System.out.println("1 billete de 10€");
-				} else if (cambio>1) {
-					System.out.println(cambio+" billetes de 10€");
-				}
-				centimos -= cambio*1000;
-				billete=500;
-				//break;
-			case 500: 
-				cambio = centimos/500;
-				if (cambio==1) {
-					System.out.println("1 billete de 5€");
-				} else if (cambio>1) {
-					System.out.println(cambio+" billetes de 5€");
-				}
-				centimos -= cambio*500;
-				billete=200;
-				//break;
-			case 200: 
-				cambio = centimos/200;
-				if (cambio==1) {
-					System.out.println("1 moneda de 2€");
-				} else if (cambio>1) {
-					System.out.println(cambio+" monedas de 2€");
-				}
-				centimos -= cambio*200;
-				billete=100;
-				//break;
-			case 100: 
-				cambio = centimos/100;
-				if (cambio==1) {
-					System.out.println("1 Moneda de 1€");
-				} else if (cambio>1) {
-					System.out.println(cambio+" moneda de 1€");
-				}
-				centimos -= cambio*100;
-				billete=50;
-				//break;
-			case 50: 
-				cambio = centimos/50;
-				if (cambio==1) {
-					System.out.println("1 Moneda de 50Cen");
-				} else if (cambio>1) {
-					System.out.println(cambio+" moneda de 50Cen");
-				}
-				centimos -= cambio*50;
-				billete=20;
-				//break;
-			case 20: 
-				cambio = centimos/20;
-				if (cambio==1) {
-					System.out.println("1 Moneda de 20Cen");
-				} else if (cambio>1) {
-					System.out.println(cambio+" moneda de 20Cen");
-				}
-				centimos -= cambio*20;
-				billete=10;
-				//break;
-			case 10: 
-				cambio = centimos/10;
-				if (cambio==1) {
-					System.out.println("1 Moneda de 10Cen");
-				} else if (cambio>1) {
-					System.out.println(cambio+" moneda de 10Cen");
-				}
-				centimos -= cambio*10;
-				billete=5;
-				//break;
-			case 5: 
-				cambio = centimos/5;
-				if (cambio==1) {
-					System.out.println("1 Moneda de 5Cen");
-				} else if (cambio>1) {
-					System.out.println(cambio+" moneda de 5Cen");
-				}
-				centimos -= cambio*5;
-				billete=2;
-				//break;
-			case 2: 
-				cambio = centimos/2;
-				if (cambio==1) {
-					System.out.println("1 Moneda de 2Cen");
-				} else if (cambio>1) {
-					System.out.println(cambio+" moneda de 2Cen");
-				}
-				centimos -= cambio*2;
-				billete=1;
-				//break;
-			case 1: 
-				cambio = centimos/1;
-				if (cambio==1) {
-					System.out.println("1 Moneda de 1Cen");
-				} else if (cambio>1) {
-					System.out.println(cambio+" moneda de 1Cen");
-				}
-				centimos -= cambio*1;
-				//break;
-			default:
-			}
 		
+		int[] Billetes= {10000, 5000, 2000, 1000, 500};//Almacena todos los billetes
+		int[] Monedas= {200, 100, 50, 20, 10, 5, 2, 1};//Almacena todas las monedas
+		
+		for (int i=0;i<Billetes.length;i++) {
+			cambio = centimos/Billetes[i];
+			if (cambio==1) {
+				System.out.println("1 billete de "+Billetes[i]/100+"€");
+			} else if (cambio>1) {
+				System.out.println(cambio+" billetes de "+Billetes[i]/100+"€");
+			}
+			centimos -= cambio*Billetes[i];
+		}
+		for (int i=0;i<Monedas.length;i++) {
+			cambio = centimos/Monedas[i];
+			if (cambio==1) {
+				System.out.println("1 Moneda de "+Monedas[i]/100+"€");
+			} else if (cambio>1) {
+				System.out.println(cambio+" monedas de "+Monedas[i]/100+"€");
+			}
+			centimos -= cambio*Monedas[i];
+		}
 	}
 	/**
 	 * Sirve para realizar el pago con tarjeta
-	 * 
 	 * @param PrimerNumeroChar recojemos en caracter 1 de la tarjeta
 	 * @param PrimerNumero con el puedo saber el tipo de la tarjeta y si esta mal 
 	 */
