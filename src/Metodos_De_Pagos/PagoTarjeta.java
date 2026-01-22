@@ -5,5 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class PagoTarjeta {
-
+	
+	private String tipoTarjeta;
+	
+	public PagoTarjeta(float importe, String tipoTarjeta)
 }
