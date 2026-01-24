@@ -1,11 +1,16 @@
 package Main;
 
+//prueba git add
 import java.awt.Menu;
 //tu abuela bro
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.Scanner;
+
+import Metodos_De_Pagos.Metodos_Pago;
+import Metodos_De_Pagos.PagoEfectivo;
+import Metodos_De_Pagos.PagoIBAN;
 
 public class Main {
 	
@@ -19,9 +24,8 @@ public class Main {
 			
             switch (menu) {
             case 1: {
-                importe = pedirImporte();
-                //MetodoPago pago = new PagoEfectivo(sc); // polimorfismo
-                //pago.pagar(importe);
+                Metodos_Pago pago = new PagoIBAN(); // polimorfismo
+                pago.pagar();
                 break;
             }
             case 2: {
