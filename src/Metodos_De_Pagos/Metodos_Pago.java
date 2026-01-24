@@ -1,12 +1,16 @@
 package Metodos_De_Pagos;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
 import java.util.Scanner;
 
 public abstract class Metodos_Pago {
 
     private float importe;
     private Scanner sc = new Scanner(System.in);
-
+    private String codigoOperacion, fechaOperacion;
+    
     /**
 	 * @return the importe
 	 */
@@ -34,10 +38,50 @@ public abstract class Metodos_Pago {
 	public Metodos_Pago() {
         this.sc = new Scanner(System.in);
         this.importe = 0;
+        this.codigoOperacion = "";
+        this.fechaOperacion = "";
     }
-    public Metodos_Pago(Scanner scanner, float Importe) {
+    public Metodos_Pago(Scanner scanner, float Importe,String CodigoOperacion, String FechaOperacion) {
     		sc = scanner;
     		importe = Importe;
+    		codigoOperacion = CodigoOperacion;
+    		fechaOperacion = FechaOperacion;
+    }
+    public void devuelveFecha() {
+        LocalDateTime date = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("d/M/yyyy - HH:mm:ss");
+        fechaOperacion = date.format(formato);
+    }
+    /**
+	 * @return the codigoOperacion
+	 */
+	public String getCodigoOperacion() {
+		return codigoOperacion;
+	}
+	/**
+	 * @param codigoOperacion the codigoOperacion to set
+	 */
+	public void setCodigoOperacion(String codigoOperacion) {
+		this.codigoOperacion = codigoOperacion;
+	}
+	/**
+	 * @return the fechaOperacion
+	 */
+	public String getFechaOperacion() {
+		return fechaOperacion;
+	}
+	/**
+	 * @param fechaOperacion the fechaOperacion to set
+	 */
+	public void setFechaOperacion(String fechaOperacion) {
+		this.fechaOperacion = fechaOperacion;
+	}
+	protected void codigoOperacion() {
+        Random random = new Random();
+        StringBuilder codigo = new StringBuilder();
+        for (int i = 0; i < 3; i++) codigo.append((char) ('A' + random.nextInt(26)));
+        for (int i = 0; i < 4; i++) codigo.append(random.nextInt(10));
+        codigoOperacion = codigo.toString();
     }
 
     // El padre pide y GUARDA el importe
