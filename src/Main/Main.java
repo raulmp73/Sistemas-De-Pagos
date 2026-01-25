@@ -29,9 +29,8 @@ public class Main {
                 break;
             }
             case 2: {
-                importe = pedirImporte();
                 MetodoPago pago = new PagoTarjeta(sc);
-                pago.pagar(importe);
+                pago.pagar();
                 break;
             }
             case 3: {
