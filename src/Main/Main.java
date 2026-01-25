@@ -30,8 +30,8 @@ public class Main {
             }
             case 2: {
                 importe = pedirImporte();
-                //MetodoPago pago = new PagoTarjeta(sc);
-                //pago.pagar(importe);
+                MetodoPago pago = new PagoTarjeta(sc);
+                pago.pagar(importe);
                 break;
             }
             case 3: {
